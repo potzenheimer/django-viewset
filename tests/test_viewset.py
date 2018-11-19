@@ -19,7 +19,7 @@ def describe_viewset():
 
         viewset = ThreeViews()
 
-        assert viewset.views.keys() == ['a', 'c', 'b']
+        assert list(viewset.views.keys()) == ['a', 'c', 'b']
 
     def it_contains_urlview():
         viewset = SimpleViewSet()

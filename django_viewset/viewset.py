@@ -23,7 +23,7 @@ class ViewSetMetaClass(type):
 
         views = [
             (attribute, value)
-            for attribute, value in attrs.items()
+            for attribute, value in list(attrs.items())
             if isinstance(value, NamedView)]
         views.sort(key=lambda x: x[1].creation_counter)
         for attribute, view in views:
@@ -69,7 +69,7 @@ class ViewSet(with_metaclass(ViewSetMetaClass), object):
         add_view(self, named_view, attribute)
 
     def get_view(self, name):
-        for view in self.views.values():
+        for view in list(self.views.values()):
             if view.name == name:
                 return view
         raise ValueError('Cannot find viewset view named {0}'.format(name))
@@ -126,7 +126,7 @@ class ViewSet(with_metaclass(ViewSetMetaClass), object):
                 'Cannot instantiate viewset view "{}.{}". '
                 'The error was: {0}'.format(
                     self.__class__.__name__, viewset_view.name, e))
-            raise new_exception, None, trace
+            raise new_exception # , None, trace
         return view_instance
 
     def get_view_urlname(self, viewset_view):
@@ -137,7 +137,7 @@ class ViewSet(with_metaclass(ViewSetMetaClass), object):
 
     def get_urls(self):
         patterns = []
-        for viewset_view in self.views.values():
+        for viewset_view in list(self.views.values()):
             # We will only create url patterns for views that have an actual
             # url attribute. This is for example true for all subclasses of
             # URLView.

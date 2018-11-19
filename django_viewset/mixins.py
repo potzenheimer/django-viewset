@@ -1,3 +1,4 @@
+from builtins import object
 class ViewSetView(object):
     '''
     A mixin for views to make them compatible with ``ViewSet``.

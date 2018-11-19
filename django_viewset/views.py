@@ -1,3 +1,4 @@
+from builtins import object
 class NamedView(object):
     '''
     A base class that is used in ViewSetMetaClass to indentify attributes that

@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+
+0.2.0
+~~~~~
+
+* Python3 compatibility.
+
 0.1.1
 ~~~~~
 
